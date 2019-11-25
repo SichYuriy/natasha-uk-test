@@ -1,11 +1,6 @@
 const NatashaUkStarter = require('natasha-uk-starter');
 
-let starter = new NatashaUkStarter('http://localhost:8100', 'mongodb://localhost:27017', {
-    info: console.log
-});
-
-// Ініціалізує словник весум. Пушить словник в монго базу і індексує. Триває до 10 хв. Виконати лише один раз.
-// starter.initVesum();
+let starter = new NatashaUkStarter('http://localhost:8100');
 
 // entity extraction:
 starter.extractPersons(['Президент Білорусії Олександр Лукашенко запросив президента України Володимира Зеленського відвідати з офіційним візитом Білорусь у зручний час.'])
@@ -18,4 +13,7 @@ starter.extractNames(['Президент Білорусії Олександр 
     .then(a => console.log(JSON.stringify(a)));
 
 starter.extractDates(['У 1903 році нагороду отримала Марія Склодовська-Кюрі за дослідження радіації, а в 1963 році Марія Гепперт-Майєр за відкриття, що стосуються структури оболонки ядра. 7 жовтня 2019 року у Швеції почався Нобелівський тиждень.'])
+    .then(a => console.log(JSON.stringify(a)));
+
+starter.extractAllEntities(['У 1903 році нагороду отримала Марія Склодовська-Кюрі за дослідження радіації, а в 1963 році Марія Гепперт-Майєр за відкриття, що стосуються структури оболонки ядра. 7 жовтня 2019 року у Швеції почався Нобелівський тиждень.'])
     .then(a => console.log(JSON.stringify(a)));
